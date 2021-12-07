@@ -104,7 +104,7 @@ router.delete('/:id', auth, async (req, res) => {
     if(card.user.toString() !== req.user.id) {
       return res.status(401).json({ msg: 'User not authorized' });
     }
-
+    
     await card.remove();
 
     res.status(200).json({ msg: "Card Removed" });
