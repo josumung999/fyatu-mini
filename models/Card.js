@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
-const Schema = mongoose.Schema()
+const Schema = mongoose.Schema;
 
 const CardSchema = new Schema(
   {
     user: {
-      type: Schema.Types.ObjectId,
+      type: Schema.ObjectId,
       ref: 'users'
     },
     cardName: {
@@ -28,7 +28,7 @@ const CardSchema = new Schema(
       type: Number
     }
   },
-  { timestamps: 4 }
+  { timestamps: true }
 )
 
 module.exports = Card = mongoose.model('card', CardSchema);
