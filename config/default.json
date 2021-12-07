@@ -1,3 +1,4 @@
 {
-  "mongoURI": "mongodb://localhost:27017/fyatumini"
+  "mongoURI": "mongodb://localhost:27017/fyatumini",
+  "jwtSecret": "WhateverItTakes"
 }
