@@ -14,15 +14,16 @@ const CardSchema = new Schema(
     },
     cardNumber: {
       type: String,
-      required: true
+      required: true,
+      unique: true
     },
-    CardSecret: {
+    cardSecret: {
       type: Number,
       required: true
     },
     cardStatus: {
-      type: Boolean,
-      default: "Active"
+      type: String,
+      default: 'Active',
     },
     cardAmount: {
       type: Number
