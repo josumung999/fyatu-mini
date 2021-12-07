@@ -55,11 +55,10 @@ router.post('/',
 router.get('/', auth, async (req, res) => {
   try {
     const myCards = await Card.find({ user: req.user.id })
-
+    
     if(myCards.length === 0) {
       return res.status(400).json({ msg: 'You haven\'t created a card yet!' });
     }
-
     res.status(200).json(myCards);
   } catch (err) {
     console.error(err.message);
@@ -81,6 +80,34 @@ router.get('/:id', auth, async (req, res) => {
     }
 
     res.status(200).json(card);
+  } catch (err) {
+    console.error(err.message);
+    if(err.kind === 'ObjectId') {
+      return res.status(404).json({ msg: 'Card not Found' });
+    }
+    res.status(500).send('Server Error');
+  }
+});
+
+// @route   DELETE api/cards/:id
+// @desc    Delete a Card
+// @access    Private
+
+router.delete('/:id', auth, async (req, res) => {
+  try {
+    const card = await Card.findById(req.params.id);
+
+    if(!card) {
+      return res.status(404).json({ msg: 'Card not Found' });
+    }
+    // Check on user
+    if(card.user.toString() !== req.user.id) {
+      return res.status(401).json({ msg: 'User not authorized' });
+    }
+
+    await card.remove();
+
+    res.status(200).json({ msg: "Card Removed" });
   } catch (err) {
     console.error(err.message);
     if(err.kind === 'ObjectId') {
