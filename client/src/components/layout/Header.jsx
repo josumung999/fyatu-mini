@@ -8,9 +8,9 @@ const Header = () => {
         <div className="container   d-flex flex-column align-items-center justify-content-center">
           <h1 className="x-large">Mini Fyatu</h1>
           <p className="text-center">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci error in blanditiis eum numquam vero necessitatibus accusamus. Quae enim ipsam eius doloribus? Voluptatibus quis cum ipsam veniam expedita praesentium corporis!</p>
-          <div className="buttons">
-            <Link to="/register" className=" btn btn-primary">Sign Up</Link>
-            <Link to="/login" className="btn btn-primary">Login</Link>
+          <div className="d-flex flex-wrap">
+            <Link to="/register" className="mx-3 btn btn-primary">Sign Up</Link>
+            <Link to="/login" className="btn btn-info">Login</Link>
           </div>
         </div>
       </div>
