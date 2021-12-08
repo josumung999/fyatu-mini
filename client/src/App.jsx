@@ -10,13 +10,17 @@ import Header from './components/layout/Header';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login'
 
+// Redux
+import { Provider } from 'react-redux';
+import store from './store';
+
 // CSS
 import './App.css';
 import "bootstrap/dist/css/bootstrap.css";
 
 
-const App = () => {
-  return (
+const App = () => (
+  <Provider store={store}>
     <Router>
       <Fragment>
         <Navbar />
@@ -29,8 +33,8 @@ const App = () => {
         </Routes>
       </Fragment>
     </Router>
-  );
-}
+  </Provider>
+);
 
 export default App;
   
