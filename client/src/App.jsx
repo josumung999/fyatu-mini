@@ -8,7 +8,8 @@ import {
 import Navbar from './components/layout/Navbar';
 import Header from './components/layout/Header';
 import Register from './components/auth/Register';
-import Login from './components/auth/Login'
+import Login from './components/auth/Login';
+import Alert from './components/layout/Alert';
 
 // Redux
 import { Provider } from 'react-redux';
@@ -24,6 +25,7 @@ const App = () => (
     <Router>
       <Fragment>
         <Navbar />
+        <Alert />
         <Routes>
           <Route path="/" element={<Header />} />
           <Fragment>
