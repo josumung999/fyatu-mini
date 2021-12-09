@@ -1,7 +1,16 @@
-import { Fragment } from 'react';
+import { Fragment, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { getCards } from '../../actions/card'
 
-const Dashboard = props => {
+
+const Dashboard = ({ getCards, card: { cards, loading } }) => {
+  useEffect(() => {
+    getCards()
+  }, [getCards])
+  
+  
   return (
     <Fragment>
       <div className="dashboard">
@@ -56,6 +65,15 @@ const Dashboard = props => {
   )
 }
 
+Dashboard.propTypes = {
+  getCards: PropTypes.func.isRequired,
+  card: PropTypes.object.isRequired
+}
 
 
-export default Dashboard
+const mapStateToProps = state => ({
+  card: state.card
+})
+
+
+export default connect(mapStateToProps, { getCards })(Dashboard)
