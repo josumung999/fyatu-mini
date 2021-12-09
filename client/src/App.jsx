@@ -22,6 +22,7 @@ import { loadUser } from './actions/auth';
 // CSS
 import './App.css';
 import "bootstrap/dist/css/bootstrap.css";
+import CreateCard from './components/dashboard/CreateCard';
 
 
 if(localStorage.token) {
@@ -49,6 +50,14 @@ const App = () => {
                 element={
                   <PrivateRoute>
                     <Dashboard />
+                  </PrivateRoute>
+                }
+              />
+              <Route 
+                path="/create-card"
+                element={
+                  <PrivateRoute>
+                    <CreateCard />
                   </PrivateRoute>
                 }
               />
