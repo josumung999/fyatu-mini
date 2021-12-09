@@ -46,14 +46,14 @@ const Dashboard = ({ getCards, card: { cards, loading } }) => {
                   {cards.map((card, index) => (
                     <tr key={card._id}>
                       <th scope="row">{index + 1}</th>
-                      <td>{card.cardName}</td>
+                      <td><span className="text-light bg-success">{card.cardStatus}</span> {card.cardName}</td>
                       <td>{card.cardNumber}</td>
                       <td>{card.cardSecret}</td>
                       <td><Moment format='YYYY/MM/DD'>{card.createdAt}</Moment></td>
                       <td>{ !card.cardAmount ? '$ O' : `$ ${card.cardAmount}`}</td>
                       <td>
                         <div className="btn-group">
-                          <button className="btn btn-secondary">
+                          <button className="btn btn-info">
                             View
                           </button>
                           <button className="btn btn-danger">
