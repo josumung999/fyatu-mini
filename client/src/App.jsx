@@ -10,6 +10,8 @@ import Header from './components/layout/Header';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Alert from './components/layout/Alert';
+import Dashboard from './components/dashboard/Dashboard';
+import PrivateRoute from './components/routing/PrivateRoute';
 
 // Redux
 import { Provider } from 'react-redux';
@@ -42,6 +44,14 @@ const App = () => {
             <Fragment>
               <Route path="/register" element={<Register />} />
               <Route path="/login" element={<Login />} />
+              <Route 
+                path="/dashboard"
+                element={
+                  <PrivateRoute>
+                    <Dashboard />
+                  </PrivateRoute>
+                }
+              />
             </Fragment>
           </Routes>
         </Fragment>
