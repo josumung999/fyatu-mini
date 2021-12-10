@@ -2,9 +2,15 @@ import PropTypes from 'prop-types'
 import { Fragment } from 'react'
 import Moment from 'react-moment'
 import { connect } from 'react-redux'
+import { deleteCard } from '../../actions/card'
 
 
-const CardItem = ({ auth, card: { _id, cardName, cardNumber, cardStatus, cardSecret, createdAt, cardAmount  }, index }) => {
+const CardItem = ({ 
+  auth,
+  deleteCard,
+  card: { _id, cardName, cardNumber, cardStatus, cardSecret, createdAt, cardAmount  },
+  index 
+}) => {
   return (
     <Fragment>
       <tr key={_id}>
@@ -19,8 +25,8 @@ const CardItem = ({ auth, card: { _id, cardName, cardNumber, cardStatus, cardSec
             <button className="btn btn-info">
               View
             </button>
-            <button className="btn btn-danger">
-              Delete
+            <button onClick={e => deleteCard(_id)} className="btn btn-danger">
+              <i className="fas fa-times"></i>
             </button>
           </div>
         </td>
@@ -32,10 +38,11 @@ const CardItem = ({ auth, card: { _id, cardName, cardNumber, cardStatus, cardSec
 CardItem.propTypes = {
   card: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired,
+  deleteCard: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({
   auth: state.auth
 })
 
-export default connect(mapStateToProps, {  })(CardItem)
+export default connect(mapStateToProps, { deleteCard })(CardItem)

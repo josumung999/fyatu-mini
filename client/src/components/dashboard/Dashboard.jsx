@@ -17,7 +17,7 @@ const Dashboard = ({ auth, getCards, card: { cards, loading } }) => {
       <div className="dashboard">
         <div className="pt-4 jumbotron bg-dark text-light">
           <div className="container">
-            <h1 className="display-3 text-center">Hello {auth.user.name}</h1>
+            <h1 className="display-3 text-center">Hello</h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi nemo, enim aut vel fugiat corporis dolor minima modi reprehenderit animi architecto illum eos maxime repellendus doloribus, quod voluptatibus delectus vero?</p>
             <div className="d-flex flex-wrap my-4">
               <Link to="/create-card" className="mx-3 btn btn-primary"><i className="fab fa-cc-visa"></i> Create a Virtual Card</Link>

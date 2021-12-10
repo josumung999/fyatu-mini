@@ -1,6 +1,7 @@
 import {
   GET_CARDS,
-  CARD_ERROR
+  CARD_ERROR,
+  DELETE_CARD
 } from '../actions/types'
 
 const initialState = {
@@ -21,14 +22,20 @@ export default function(state = initialState, action) {
         cards: payload,
         loading: false
       }
-      case CARD_ERROR:
-        return {
-          ...state,
-          error: payload,
-          loading: false
-        }
-      default:
-        return state
+    case DELETE_CARD:
+      return {
+        ...state,
+        cards: state.cards.filter(card => card._id !== payload),
+        loading: false
+      }
+    case CARD_ERROR:
+      return {
+        ...state,
+        error: payload,
+        loading: false
+      }
+    default:
+      return state
   }
 }
 

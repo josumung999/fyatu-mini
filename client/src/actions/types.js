@@ -9,3 +9,4 @@ export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const LOGOUT = 'LOGOUT';
 export const GET_CARDS = 'GET_CARDS';
 export const CARD_ERROR = 'CARD_ERROR';
+export const DELETE_CARD = 'DELETE_CARD';
