@@ -1,6 +1,23 @@
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
+import PropTypes from 'prop-types';
+import { connect  } from 'react-redux';
+import { addCard } from '../../actions/card';
 
-const CreateCard = props => {
+const CreateCard = ({ addCard }) => {
+  const [formData, setFormData] = useState({
+    cardName: '',
+    cardAmount: 0
+  })
+
+  const { cardName,cardAmount } = formData;
+
+  const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
+
+  const onSubmit =  async e => {
+    e.preventDefault();
+    addCard(cardName, cardAmount)
+  }
+
   return (
     <Fragment>
       <div className="container">
@@ -11,13 +28,15 @@ const CreateCard = props => {
           quae quaerat rem voluptatum est porro neque debitis. 
           Sint esse tenetur reiciendis, magnam perspiciatis sunt?
         </p>
-        <form >
+        <form onSubmit={e => onSubmit()}>
           <div className="form-group mb-3">
             <input
               type="text" 
               className="form-control" 
               placeholder="Enter Card Name"
-              name="email"
+              name="cardName"
+              value={cardName}
+              onChange={e => onChange(e)}
               required
             />
           </div>
@@ -26,7 +45,8 @@ const CreateCard = props => {
               type="number" 
               className="form-control" 
               placeholder="Enter Amount"
-              name="email"
+              value={cardAmount}
+              onChange={e => onChange(e)}
               required
             />
           </div>
@@ -41,4 +61,8 @@ const CreateCard = props => {
   )
 }
 
-export default CreateCard
+CreateCard.propTypes = {
+  addCard: PropTypes.func.isRequired,
+}
+
+export default connect(null, { addCard })(CreateCard)

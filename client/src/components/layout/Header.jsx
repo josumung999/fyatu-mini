@@ -1,7 +1,14 @@
-import {Link} from 'react-router-dom';
+import {Link, Navigate} from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.css";
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-const Header = () => {
+const Header = ({ isAuthenticated }) => {
+
+  if (isAuthenticated) {
+    return <Navigate to='/dashboard' />
+  }
+
   return (
     <div className="landing">
       <div className="jumbotron bg-dark text-light d-flex justify-content-center">
@@ -18,4 +25,12 @@ const Header = () => {
   )
 }
 
-export default Header
+Header.propTypes = {
+  isAuthenticated: PropTypes.bool,
+}
+
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+})
+
+export default connect(mapStateToProps)(Header)

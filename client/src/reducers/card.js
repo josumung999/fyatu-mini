@@ -1,7 +1,8 @@
 import {
   GET_CARDS,
   CARD_ERROR,
-  DELETE_CARD
+  DELETE_CARD,
+  ADD_CARD
 } from '../actions/types'
 
 const initialState = {
@@ -20,6 +21,12 @@ export default function(state = initialState, action) {
       return {
         ...state,
         cards: payload,
+        loading: false
+      }
+    case ADD_CARD:
+      return {
+        ...state,
+        cards: [...state.cards, payload],
         loading: false
       }
     case DELETE_CARD:
