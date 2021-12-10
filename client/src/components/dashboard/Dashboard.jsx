@@ -44,7 +44,7 @@ const Dashboard = ({ auth, getCards, card: { cards, loading } }) => {
               </thead>
               <tbody>
                   {cards.map((card, index) => (
-                    <CardItem key={card._id} card={card} />
+                    <CardItem key={card._id} index={index} card={card} />
                   ))}
               </tbody>
             </table>
