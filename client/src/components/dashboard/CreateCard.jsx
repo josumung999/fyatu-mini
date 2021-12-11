@@ -2,6 +2,7 @@ import { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect  } from 'react-redux';
 import { addCard } from '../../actions/card';
+import { Link } from 'react-router-dom';
 
 const CreateCard = ({ addCard }) => {
   const [formData, setFormData] = useState({
@@ -15,7 +16,7 @@ const CreateCard = ({ addCard }) => {
 
   const onSubmit =  async e => {
     e.preventDefault();
-    addCard(cardName, cardAmount)
+    addCard(formData);
   }
 
   return (
@@ -28,7 +29,7 @@ const CreateCard = ({ addCard }) => {
           quae quaerat rem voluptatum est porro neque debitis. 
           Sint esse tenetur reiciendis, magnam perspiciatis sunt?
         </p>
-        <form onSubmit={e => onSubmit()}>
+        <form onSubmit={e => onSubmit(e) }>
           <div className="form-group mb-3">
             <input
               type="text" 
@@ -42,7 +43,8 @@ const CreateCard = ({ addCard }) => {
           </div>
           <div className="form-group mb-3">
             <input
-              type="number" 
+              type="number"
+              name="cardAmount"
               className="form-control" 
               placeholder="Enter Amount"
               value={cardAmount}
@@ -55,6 +57,7 @@ const CreateCard = ({ addCard }) => {
             className="btn btn-primary"
             value="Create Card"
           />
+          <Link className="btn btn-light my-1" to='/dashboard' >Dashboard</Link>
         </form>
       </div>
     </Fragment>
